@@ -1,4 +1,4 @@
-// Let's start by defining our questions for the quiz
+
 const questions = [
   { question: "What is 5 + 3?", options: ["6", "7", "8", "9"], answer: "8" },
   { question: "What is 10 - 4?", options: ["5", "6", "7", "8"], answer: "6" },
@@ -19,14 +19,14 @@ const questions = [
     answer: "Mars",
   },
   {
-    question: "Who wrote 'Romeo and Juliet'?",
-    options: ["Shakespeare", "Hemingway", "Frost", "Poe"],
-    answer: "Shakespeare",
+    question: "Who is the captain of ICT'?",
+    options: ["Dhoni", "Rohit", "Kohli", "Sachin"],
+    answer: "Rohit",
   },
   {
-    question: "What is the capital of France?",
-    options: ["Berlin", "Madrid", "Paris", "Lisbon"],
-    answer: "Paris",
+    question: "What is the capital of India?",
+    options: ["Delhi", "Mumbai", "Paris", "Lisbon"],
+    answer: "Delhi",
   },
   {
     question: "How many continents are there?",
@@ -42,8 +42,7 @@ const questions = [
 
 localStorage.setItem("questions", JSON.stringify(questions));
 
-let currentQuestion = 0;
-let score = 0;
+
 
 const questionElement = document.getElementById("question");
 const optionsContainer = document.getElementById("options-container");
@@ -58,6 +57,8 @@ const popupNextButton = document.getElementById("popup-next-button");
 const timeElement = document.querySelector("#time");
 const clockElement = document.querySelector(".clock");
 
+let currentQuestion = 0;
+let score = 0;
 let timer;
 const duration = 30;
 let answers = [];
@@ -95,8 +96,7 @@ const showPopup = () => {
   popup.style.display = "block";
 };
 
-let currentQuestionIndex = 0;
-const totalQuestions = 10;
+
 
 function initializeProgress() {
   progressBar.style.width = "0%";
@@ -108,21 +108,13 @@ let pointerPosition = 0;
 function updateProgress(isCorrect) {
   const progressPercentage = ((currentQuestion + 1) / questions.length) * 100;
   console.log(progressPercentage);
-  // Update the width of the progress bar
+
   progressBar.style.width = `${progressPercentage}%`;
 
-  
-  const milestoneWidth =
-    progressBarContainer.clientWidth / (questions.length + 1); 
-  console.log(milestoneWidth);
-  // const pointerPosition = milestoneWidth * (currentQuestion + 1); // Center the pointer on the current milestone
 
-  // const pointerPosition = ((milestoneWidth * (currentQuestion) + milestoneWidth / 2) - (pointerElement.offsetWidth ) );
-
-  // pointerPosition += (milestoneWidth + (pointerElement.offsetWidth));
   pointerPosition += 87.4;
 
-  console.log(pointerPosition);
+  // console.log(pointerPosition);
 
   pointerElement.style.left = `${pointerPosition}px`;
 
@@ -189,7 +181,7 @@ function nextQuestion() {
   updateProgress(isCorrect);
 
   currentQuestion++;
-  console.log(currentQuestion);
+  // console.log(currentQuestion);
   if (currentQuestion < questions.length) {
     loadQuestion();
   }
@@ -214,8 +206,8 @@ function submitQuiz() {
 }
 
 if (currentQuestion < questions.length - 1) {
-  console.log(currentQuestion);
-  console.log(questions.length);
+  // console.log(currentQuestion);
+  // console.log(questions.length);
   nextButton.addEventListener("click", nextQuestion);
 }
 
